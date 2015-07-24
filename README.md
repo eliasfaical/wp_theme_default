@@ -1,4 +1,4 @@
-## Tema defaul para iniciar projeto em em Wordpress
+## Tema default para iniciar projeto em em Wordpress
 
 > v.1.2
 
