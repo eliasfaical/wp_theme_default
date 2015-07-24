@@ -1,0 +1,17 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+
+# TEAM
+
+Front-end:	Balaio Design + Estratégia
+Design:	    Balaio Design + Estratégia
+Site:		http://balaiodesign.com.br
+Contact:	contato [at] balaiodesign.com.br
+Location:	Vitória, Espirito Santo, Brasil
+
+
+# TECHNOLOGY COLOPHON
+
+HTML5, CSS3, LESS, PHP, Wordpress
+JS, Bootstrap

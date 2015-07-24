@@ -1,0 +1,71 @@
+/* Mixins
+------------------------------- */
+
+.font-opensans(){
+	font-weight: 300;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.font-notoserif(){
+	font-weight: 400;
+	font-family: 'Noto Serif', serif;
+}
+
+// Transition
+.transition(@type:all, @time:0.3s, @ease:ease) {
+    transition			: @type @time @ease;
+    -moz-transition		: @type @time @ease;
+    -webkit-transition	: @type @time @ease;
+    -o-transition		: @type @time @ease;
+}
+
+// Opacidade
+.opacity(@opacity: 0.5) {
+	@ieOpacity			: @opacity * 100;
+	opacity				: @opacity;
+	-moz-opacity		: @opacity;
+	-webkit-opacity		: opacity;
+	-ms-filter			: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{ieOpacity})"; /* IE 8 */
+	filter				: ~"alpha(opacity = @{ieOpacity})"; /* IE 5-7 */
+}
+
+// Background com opacidade
+.background-alpha(@color, @alpha) {
+	@acolor			: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+	@iecolor 		: argb(@acolor);
+
+	background-color	: @color; /* fallback color */
+	background-color	: @acolor;
+
+	/* IE */
+	background-color	: transparent\9;
+	filter				: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr= @{iecolor}, endColorstr= @{iecolor})";
+	zoom:1; 
+}
+
+// Border radius
+.border-radius(@radius: 4px) {
+	border-radius			: @radius;
+	-moz-border-radius		: @radius;
+	-webkit-border-radius	: @radius;
+}
+
+// Display inline block : IE8 e 9
+.display-inline-block() {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+// Clearfix
+.clearfix() {
+  *zoom:1;
+  &:before,
+  &:after {
+    content:"";
+    display:table;
+  }
+  &:after {
+    clear:both;
+  }
+}
