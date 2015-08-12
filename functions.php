@@ -69,6 +69,16 @@ function remove_recent_comments_style() {
 }
 
 
+# Limit excerpt
+# --------------------------------------------------
+function string_limit_words($string, $word_limit) {
+    $words = explode(' ', $string, ($word_limit + 1));
+    if(count($words) > $word_limit)
+    array_pop($words);
+    return implode(' ', $words);
+}
+
+
 # Remove menu Post
 # --------------------------------------------------
 function remove_menu() {
@@ -82,7 +92,18 @@ function remove_menu() {
     // remove_menu_page( 'users.php' );                  //Users
     // remove_menu_page( 'tools.php' );                  //Tools
     // remove_menu_page( 'options-general.php' );        //Settings
-} 
+}
+
+
+# Limit excerpt
+# --------------------------------------------------
+function string_limit_words($string, $word_limit) {
+  $words = explode(' ', $string, ($word_limit + 1));
+  if(count($words) > $word_limit)
+  array_pop($words);
+  return implode(' ', $words);
+}
+
 
 
 # Alterando logo do login
