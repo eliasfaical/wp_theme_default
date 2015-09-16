@@ -23,4 +23,17 @@
 	}
 
 
+	/* Altura do banner - home
+	---------------------------------------------------------------------------------- */
+	resizeWindow();
+	function resizeWindow() {
+		var altura = $(window).height();
+		$('.title-banner').css('height', altura);
+	}
+
+	$(window).resize(function() {
+		resizeWindow();
+	});
+
+
 })(jQuery);

@@ -43,7 +43,8 @@ function theme_setup() {
     add_filter( 'show_admin_bar', '__return_false' );
     add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 ); # Remove width and height dynamic attributes to thumbnails
     add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 ); # Remove width and height dynamic attributes to post imagesavealpha(image, saveflag)
-
+    add_filter( 'tiny_mce_before_init', 'tinymce_remove_root_block_tag' );
+    
     add_action( 'wp_head', 'add_ie_html5_shim' );
     add_action( 'init', 'register_default_menu' );
     add_action( 'login_head', 'my_custom_login_logo' );
@@ -95,23 +96,12 @@ function remove_menu() {
 }
 
 
-# Limit excerpt
-# --------------------------------------------------
-function string_limit_words($string, $word_limit) {
-  $words = explode(' ', $string, ($word_limit + 1));
-  if(count($words) > $word_limit)
-  array_pop($words);
-  return implode(' ', $words);
-}
-
-
-
 # Alterando logo do login
 # --------------------------------------------------
 function my_custom_login_logo() {
     global $location_path;
     echo '<style type="text/css">
-          .login h1 a { 
+          .login h1 a {
             background-image:url('.$location_path.'sprite.png) !important;
             width: 193px;
             height: 33px;
@@ -180,6 +170,11 @@ function at_remove_wp_ver_css_js( $src ) {
 # --------------------------------------------------
 function filter_ptags_on_images($content){
    return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
+}
+
+function tinymce_remove_root_block_tag( $init ) {
+    $init['forced_root_block'] = false; 
+    return $init;
 }
 
 
